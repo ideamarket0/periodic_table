@@ -1,0 +1,41 @@
+/* style.css */
+.graph-container {
+    width: 80%;
+    max-width: 600px; /* 최대 너비 제한 */
+    margin: 20px auto;
+    text-align: center;
+}
+
+.temperature-graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px; /* 그래프 바의 높이 조정 */
+}
+
+.graph-bar {
+    width: 100%;
+    max-width: 100%;
+    background: -webkit-linear-gradient(left, #2d92ff 0%, #ffcc00 50%, #ff8c8c 100%); /* Webkit 브라우저용 그라데이션 */
+    background: linear-gradient(to right, #2d92ff 0%, #ffcc00 50%, #ff8c8c 100%); /* 표준 그라데이션 */
+    border: none;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+}
+
+.input-container-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.graph-input {
+    width: calc(33.33% - 10px);
+    text-align: center;
+    font-size: 24px;
+}

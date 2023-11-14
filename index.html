@@ -4,12 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Periodic Table</title>
+  <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  </style>
+  <link rel="stylesheet" href="./Element_Layout_css/Element.css">
+  <link rel="stylesheet" href="./Element_Layout_css/progressbar.css">
   <link rel="stylesheet" href="./css/main.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <div class="graph-container">
+    <div class="temperature-graph">
+      <!-- <input type="range" class="graph-bar" id="graphBar" min="0" max="6000" value="3000"> -->
+      <input type="number" class="graph-input" id="kelvinInput" min="0" max="6000" value="273">K
+      <input type="number" class="graph-input" id="fahrenheitInput" min="0" max="6000" value="32">°F 
+      <input type="number" class="graph-input" id="celsiusInput" min="0" max="6000" value="0">°C
+    </div>
+  </div>
+
+  <div class="graph-container">
+    <div class="graph-bar" id="graphBar">
+      <div class="graph-selector" id="graphSelector">
+        <div class="graph-value" id="numericValue"></div>
+        <!-- 수치가 필요하면, 바로 윗줄에 50 삽입. -->
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <!-- <input type="range" id="graphBar"> 개발 검토중이라 일단 주석 -->
+    <!-- Look Alignment 수정 -->
+    <button type="button" onclick="Look_Alignment('Solid', visualPosition)">고체(Solid)</button>
+    <button type="button" onclick="Look_Alignment('Liquid', visualPosition)">액체(Liquid)</button>
+    <button type="button" onclick="Look_Alignment('Gas', visualPosition)">기체(Gas)</button>
+    <button type="button" onclick="Look_Alignment('Unknown', visualPosition)">미지(Unknown)</button>
+  </section>
 
   <div class="region_periodic_table">
 
@@ -17,18 +52,26 @@
       <div class="floor floor1">
         <div class="left">
           <div class="element">
-              <div class="element_num">1</div>
-              <div class="element_symbol">H</div>
-              <div class="element_name">Hydrogen</div>
-              <div class="element_mass">1.008</div>
+            <div class="element_num">1</div>
+            <div class="element_symbol">H</div>
+            <div class="element_name">Hydrogen</div>
+            <div class="element_mass">1.008</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">-259.16°C</div>
+            <div class="element_boiling">-252.87°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>
         <div class="right">
           <div class="element">
-              <div class="element_num">2</div>
-              <div class="element_symbol">He</div>
-              <div class="element_name">Helium</div>
-              <div class="element_mass">4.002602</div>
+            <div class="element_num">2</div>
+            <div class="element_symbol">He</div>
+            <div class="element_name">Helium</div>
+            <div class="element_mass">4.0026</div>
+            <div class="element_group">Noble Gas</div>
+            <div class="element_melting">-272.20°C</div>
+            <div class="element_boiling">-268.93°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>
       </div>
@@ -39,50 +82,82 @@
             <div class="element_symbol">Li</div>
             <div class="element_name">Lithium</div>
             <div class="element_mass">6.94</div>
+            <div class="element_group">Alkali Metal</div>
+            <div class="element_melting">180.54°C</div>
+            <div class="element_boiling">1347°C</div>
+            <div class="element_form">Solid</div>
           </div>
         </div>
         <div class="right">
           <div class="element">
-              <div class="element_num">4</div>
-              <div class="element_symbol">Be</div>
-              <div class="element_name">Beryllium</div>
-              <div class="element_mass">9.0122</div>
+            <div class="element_num">4</div>
+            <div class="element_symbol">Be</div>
+            <div class="element_name">Beryllium</div>
+            <div class="element_mass">9.0122</div>
+            <div class="element_group">Alkaline Earth Metal</div>
+            <div class="element_melting">1278°C</div>
+            <div class="element_boiling">2970°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">5</div>
-              <div class="element_symbol">B</div>
-              <div class="element_name">Boron</div>
-              <div class="element_mass">10.81</div>
+            <div class="element_num">5</div>
+            <div class="element_symbol">B</div>
+            <div class="element_name">Boron</div>
+            <div class="element_mass">10.81</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">2076°C</div>
+            <div class="element_boiling">3927°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">6</div>
-              <div class="element_symbol">C</div>
-              <div class="element_name">Carbon</div>
-              <div class="element_mass">12.011</div>
+            <div class="element_num">6</div>
+            <div class="element_symbol">C</div>
+            <div class="element_name">Carbon</div>
+            <div class="element_mass">12.01</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">3500°C</div>
+            <div class="element_boiling">4827°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">7</div>
-              <div class="element_symbol">N</div>
-              <div class="element_name">Nitrogen</div>
-              <div class="element_mass">14.007</div>
+            <div class="element_num">7</div>
+            <div class="element_symbol">N</div>
+            <div class="element_name">Nitrogen</div>
+            <div class="element_mass">14.01</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">-210.00°C</div>
+            <div class="element_boiling">-195.79°C</div>
+            <div class="element_form">Gas</div>
           </div>
           <div class="element">
-              <div class="element_num">8</div>
-              <div class="element_symbol">O</div>
-              <div class="element_name">Oxygen</div>
-              <div class="element_mass">15.999</div>
+            <div class="element_num">8</div>
+            <div class="element_symbol">O</div>
+            <div class="element_name">Oxygen</div>
+            <div class="element_mass">16.00</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">-218.79°C</div>
+            <div class="element_boiling">-182.96°C</div>
+            <div class="element_form">Gas</div>
           </div>
           <div class="element">
-              <div class="element_num">9</div>
-              <div class="element_symbol">F</div>
-              <div class="element_name">Fluorine</div>
-              <div class="element_mass">18.998</div>
+            <div class="element_num">9</div>
+            <div class="element_symbol">F</div>
+            <div class="element_name">Fluorine</div>
+            <div class="element_mass">19.00</div>
+            <div class="element_group">Halogen</div>
+            <div class="element_melting">-219.67°C</div>
+            <div class="element_boiling">-188.11°C</div>
+            <div class="element_form">Gas</div>
           </div>
           <div class="element">
-              <div class="element_num">10</div>
-              <div class="element_symbol">Ne</div>
-              <div class="element_name">Neon</div>
-              <div class="element_mass">20.180</div>
+            <div class="element_num">10</div>
+            <div class="element_symbol">Ne</div>
+            <div class="element_name">Neon</div>
+            <div class="element_mass">20.18</div>
+            <div class="element_group">Noble Gas</div>
+            <div class="element_melting">-248.59°C</div>
+            <div class="element_boiling">-246.08°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>
       </div>
@@ -92,51 +167,83 @@
             <div class="element_num">11</div>
             <div class="element_symbol">Na</div>
             <div class="element_name">Sodium</div>
-            <div class="element_mass">22.990</div>
+            <div class="element_mass">22.99</div>
+            <div class="element_group">Alkali Metal</div>
+            <div class="element_melting">97.79°C</div>
+            <div class="element_boiling">883°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">12</div>
-              <div class="element_symbol">Mg</div>
-              <div class="element_name">Magnesium</div>
-              <div class="element_mass">24.305</div>
+            <div class="element_num">12</div>
+            <div class="element_symbol">Mg</div>
+            <div class="element_name">Magnesium</div>
+            <div class="element_mass">24.31</div>
+            <div class="element_group">Alkaline Earth Metal</div>
+            <div class="element_melting">650°C</div>
+            <div class="element_boiling">1090°C</div>
+            <div class="element_form">Solid</div>
           </div>
         </div>
         <div class="right">
           <div class="element">
             <div class="element_num">13</div>
             <div class="element_symbol">Al</div>
-            <div class="element_name">Aluminium</div>
-            <div class="element_mass">26.982</div>
+            <div class="element_name">Aluminum</div>
+            <div class="element_mass">26.98</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">660.32°C</div>
+            <div class="element_boiling">2519°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">14</div>
-              <div class="element_symbol">Si</div>
-              <div class="element_name">Silicon</div>
-              <div class="element_mass">28.085</div>
+            <div class="element_num">14</div>
+            <div class="element_symbol">Si</div>
+            <div class="element_name">Silicon</div>
+            <div class="element_mass">28.09</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">1414°C</div>
+            <div class="element_boiling">3265°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">15</div>
-              <div class="element_symbol">P</div>
-              <div class="element_name">Phosphorus</div>
-              <div class="element_mass">30.974</div>
+            <div class="element_num">15</div>
+            <div class="element_symbol">P</div>
+            <div class="element_name">Phosphorus</div>
+            <div class="element_mass">30.97</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">44.15°C</div>
+            <div class="element_boiling">280.5°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">16</div>
-              <div class="element_symbol">S</div>
-              <div class="element_name">Sulfur</div>
-              <div class="element_mass">32.06</div>
+            <div class="element_num">16</div>
+            <div class="element_symbol">S</div>
+            <div class="element_name">Sulfur</div>
+            <div class="element_mass">32.07</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">115.21°C</div>
+            <div class="element_boiling">444.67°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">17</div>
-              <div class="element_symbol">Cl</div>
-              <div class="element_name">Chlorine</div>
-              <div class="element_mass">35.45</div>
+            <div class="element_num">17</div>
+            <div class="element_symbol">Cl</div>
+            <div class="element_name">Chlorine</div>
+            <div class="element_mass">35.45</div>
+            <div class="element_group">Halogen</div>
+            <div class="element_melting">-101.5°C</div>
+            <div class="element_boiling">-34.04°C</div>
+            <div class="element_form">Gas</div>
           </div>
           <div class="element">
-              <div class="element_num">18</div>
-              <div class="element_symbol">Ar</div>
-              <div class="element_name">Argon</div>
-              <div class="element_mass">39.948</div>
+            <div class="element_num">18</div>
+            <div class="element_symbol">Ar</div>
+            <div class="element_name">Argon</div>
+            <div class="element_mass">39.95</div>
+            <div class="element_group">Noble Gas</div>
+            <div class="element_melting">-189.34°C</div>
+            <div class="element_boiling">-185.85°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>  
       </div>
@@ -146,13 +253,21 @@
             <div class="element_num">19</div>
             <div class="element_symbol">K</div>
             <div class="element_name">Potassium</div>
-            <div class="element_mass">39.098</div>
+            <div class="element_mass">39.10</div>
+            <div class="element_group">Alkali Metal</div>
+            <div class="element_melting">63.38°C</div>
+            <div class="element_boiling">759.6°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">20</div>
-              <div class="element_symbol">Ca</div>
-              <div class="element_name">Calcium</div>
-              <div class="element_mass">40.078</div>
+            <div class="element_num">20</div>
+            <div class="element_symbol">Ca</div>
+            <div class="element_name">Calcium</div>
+            <div class="element_mass">40.08</div>
+            <div class="element_group">Alkaline Earth Metal</div>
+            <div class="element_melting">842°C</div>
+            <div class="element_boiling">1484°C</div>
+            <div class="element_form">Solid</div>
           </div>
         </div>
         <div class="right">
@@ -160,97 +275,161 @@
             <div class="element_num">21</div>
             <div class="element_symbol">Sc</div>
             <div class="element_name">Scandium</div>
-            <div class="element_mass">44.956</div>
+            <div class="element_mass">44.96</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1539°C</div>
+            <div class="element_boiling">2836°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">22</div>
-              <div class="element_symbol">Ti</div>
-              <div class="element_name">Titanium</div>
-              <div class="element_mass">47.867</div>
+            <div class="element_num">22</div>
+            <div class="element_symbol">Ti</div>
+            <div class="element_name">Titanium</div>
+            <div class="element_mass">47.87</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1660°C</div>
+            <div class="element_boiling">3287°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">23</div>
-              <div class="element_symbol">V</div>
-              <div class="element_name">Vanadium</div>
-              <div class="element_mass">50.942</div>
+            <div class="element_num">23</div>
+            <div class="element_symbol">V</div>
+            <div class="element_name">Vanadium</div>
+            <div class="element_mass">50.94</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1910°C</div>
+            <div class="element_boiling">3407°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">24</div>
-              <div class="element_symbol">Cr</div>
-              <div class="element_name">Chromium</div>
-              <div class="element_mass">51.996</div>
+            <div class="element_num">24</div>
+            <div class="element_symbol">Cr</div>
+            <div class="element_name">Chromium</div>
+            <div class="element_mass">52.00</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1907°C</div>
+            <div class="element_boiling">2671°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">25</div>
-              <div class="element_symbol">Mn</div>
-              <div class="element_name">Manganese</div>
-              <div class="element_mass">54.938</div>
+            <div class="element_num">25</div>
+            <div class="element_symbol">Mn</div>
+            <div class="element_name">Manganese</div>
+            <div class="element_mass">54.94</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1246°C</div>
+            <div class="element_boiling">2061°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">26</div>
-              <div class="element_symbol">Fe</div>
-              <div class="element_name">Iron</div>
-              <div class="element_mass">55.845</div>
+            <div class="element_num">26</div>
+            <div class="element_symbol">Fe</div>
+            <div class="element_name">Iron</div>
+            <div class="element_mass">55.85</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1538°C</div>
+            <div class="element_boiling">2862°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">27</div>
-              <div class="element_symbol">Co</div>
-              <div class="element_name">Cobalt</div>
-              <div class="element_mass">58.933</div>
+            <div class="element_num">27</div>
+            <div class="element_symbol">Co</div>
+            <div class="element_name">Cobalt</div>
+            <div class="element_mass">58.93</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1495°C</div>
+            <div class="element_boiling">2870°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">28</div>
-              <div class="element_symbol">Ni</div>
-              <div class="element_name">Nickel</div>
-              <div class="element_mass">58.693</div>
+            <div class="element_num">28</div>
+            <div class="element_symbol">Ni</div>
+            <div class="element_name">Nickel</div>
+            <div class="element_mass">58.69</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1455°C</div>
+            <div class="element_boiling">2732°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">29</div>
-              <div class="element_symbol">Cu</div>
-              <div class="element_name">Copper</div>
-              <div class="element_mass">63.546</div>
+            <div class="element_num">29</div>
+            <div class="element_symbol">Cu</div>
+            <div class="element_name">Copper</div>
+            <div class="element_mass">63.55</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1084°C</div>
+            <div class="element_boiling">2562°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">30</div>
-              <div class="element_symbol">Zn</div>
-              <div class="element_name">Zinc</div>
-              <div class="element_mass">65.38</div>
+            <div class="element_num">30</div>
+            <div class="element_symbol">Zn</div>
+            <div class="element_name">Zinc</div>
+            <div class="element_mass">65.38</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">419.53°C</div>
+            <div class="element_boiling">907°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">31</div>
-              <div class="element_symbol">Ga</div>
-              <div class="element_name">Gallium</div>
-              <div class="element_mass">69.723</div>
+            <div class="element_num">31</div>
+            <div class="element_symbol">Ga</div>
+            <div class="element_name">Gallium</div>
+            <div class="element_mass">69.72</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">29.76°C</div>
+            <div class="element_boiling">2204°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">32</div>
-              <div class="element_symbol">Ge</div>
-              <div class="element_name">Germanium</div>
-              <div class="element_mass">72.63</div>
+            <div class="element_num">32</div>
+            <div class="element_symbol">Ge</div>
+            <div class="element_name">Germanium</div>
+            <div class="element_mass">72.63</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">938.25°C</div>
+            <div class="element_boiling">2833°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">33</div>
-              <div class="element_symbol">As</div>
-              <div class="element_name">Arsenic</div>
-              <div class="element_mass">74.922</div>
+            <div class="element_num">33</div>
+            <div class="element_symbol">As</div>
+            <div class="element_name">Arsenic</div>
+            <div class="element_mass">74.92</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">817°C</div>
+            <div class="element_boiling">614°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">34</div>
-              <div class="element_symbol">Se</div>
-              <div class="element_name">Selenium</div>
-              <div class="element_mass">78.971</div>
+            <div class="element_num">34</div>
+            <div class="element_symbol">Se</div>
+            <div class="element_name">Selenium</div>
+            <div class="element_mass">78.97</div>
+            <div class="element_group">Nonmetal</div>
+            <div class="element_melting">220.75°C</div>
+            <div class="element_boiling">685°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">35</div>
-              <div class="element_symbol">Br</div>
-              <div class="element_name">Bromine</div>
-              <div class="element_mass">79.904</div>
+            <div class="element_num">35</div>
+            <div class="element_symbol">Br</div>
+            <div class="element_name">Bromine</div>
+            <div class="element_mass">79.90</div>
+            <div class="element_group">Halogen</div>
+            <div class="element_melting">-7.2°C</div>
+            <div class="element_boiling">58.8°C</div>
+            <div class="element_form">Liquid</div>
           </div>
           <div class="element">
-              <div class="element_num">36</div>
-              <div class="element_symbol">Kr</div>
-              <div class="element_name">Krypton</div>
-              <div class="element_mass">83.798</div>
+            <div class="element_num">36</div>
+            <div class="element_symbol">Kr</div>
+            <div class="element_name">Krypton</div>
+            <div class="element_mass">83.80</div>
+            <div class="element_group">Noble Gas</div>
+            <div class="element_melting">-157.37°C</div>
+            <div class="element_boiling">-153.42°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>  
       </div>
@@ -260,13 +439,21 @@
             <div class="element_num">37</div>
             <div class="element_symbol">Rb</div>
             <div class="element_name">Rubidium</div>
-            <div class="element_mass">85.468</div>
+            <div class="element_mass">85.47</div>
+            <div class="element_group">Alkali Metal</div>
+            <div class="element_melting">38.89°C</div>
+            <div class="element_boiling">688°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">38</div>
-              <div class="element_symbol">Sr</div>
-              <div class="element_name">Strontium</div>
-              <div class="element_mass">87.62</div>
+            <div class="element_num">38</div>
+            <div class="element_symbol">Sr</div>
+            <div class="element_name">Strontium</div>
+            <div class="element_mass">87.62</div>
+            <div class="element_group">Alkaline Earth Metal</div>
+            <div class="element_melting">769°C</div>
+            <div class="element_boiling">1384°C</div>
+            <div class="element_form">Solid</div>
           </div>
         </div>
         <div class="right">
@@ -274,97 +461,161 @@
             <div class="element_num">39</div>
             <div class="element_symbol">Y</div>
             <div class="element_name">Yttrium</div>
-            <div class="element_mass">88.906</div>
+            <div class="element_mass">88.91</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1522°C</div>
+            <div class="element_boiling">3338°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">40</div>
-              <div class="element_symbol">Zr</div>
-              <div class="element_name">Zirconium</div>
-              <div class="element_mass">91.224</div>
+            <div class="element_num">40</div>
+            <div class="element_symbol">Zr</div>
+            <div class="element_name">Zirconium</div>
+            <div class="element_mass">91.22</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1855°C</div>
+            <div class="element_boiling">4371°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">41</div>
-              <div class="element_symbol">Nb</div>
-              <div class="element_name">Niobium</div>
-              <div class="element_mass">92.906</div>
+            <div class="element_num">41</div>
+            <div class="element_symbol">Nb</div>
+            <div class="element_name">Niobium</div>
+            <div class="element_mass">92.91</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">2468°C</div>
+            <div class="element_boiling">4742°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">42</div>
-              <div class="element_symbol">Mo</div>
-              <div class="element_name">Molybdenum</div>
-              <div class="element_mass">95.95</div>
+            <div class="element_num">42</div>
+            <div class="element_symbol">Mo</div>
+            <div class="element_name">Molybdenum</div>
+            <div class="element_mass">95.94</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">2623°C</div>
+            <div class="element_boiling">4639°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">43</div>
-              <div class="element_symbol">Tc</div>
-              <div class="element_name">Technetium</div>
-              <div class="element_mass">98</div>
+            <div class="element_num">43</div>
+            <div class="element_symbol">Tc</div>
+            <div class="element_name">Technetium</div>
+            <div class="element_mass">98</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">2157°C</div>
+            <div class="element_boiling">4265°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">44</div>
-              <div class="element_symbol">Ru</div>
-              <div class="element_name">Ruthenium</div>
-              <div class="element_mass">101.07</div>
+            <div class="element_num">44</div>
+            <div class="element_symbol">Ru</div>
+            <div class="element_name">Ruthenium</div>
+            <div class="element_mass">101.1</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">2334°C</div>
+            <div class="element_boiling">4150°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">45</div>
-              <div class="element_symbol">Rh</div>
-              <div class="element_name">Rhodium</div>
-              <div class="element_mass">102.91</div>
+            <div class="element_num">45</div>
+            <div class="element_symbol">Rh</div>
+            <div class="element_name">Rhodium</div>
+            <div class="element_mass">102.9</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1963°C</div>
+            <div class="element_boiling">3697°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">46</div>
-              <div class="element_symbol">Pd</div>
-              <div class="element_name">Palladium</div>
-              <div class="element_mass">106.42</div>
+            <div class="element_num">46</div>
+            <div class="element_symbol">Pd</div>
+            <div class="element_name">Palladium</div>
+            <div class="element_mass">106.4</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1555°C</div>
+            <div class="element_boiling">2927°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">47</div>
-              <div class="element_symbol">Ag</div>
-              <div class="element_name">Silver</div>
-              <div class="element_mass">107.87</div>
+            <div class="element_num">47</div>
+            <div class="element_symbol">Ag</div>
+            <div class="element_name">Silver</div>
+            <div class="element_mass">107.9</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">961.8°C</div>
+            <div class="element_boiling">2162°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">48</div>
-              <div class="element_symbol">Cd</div>
-              <div class="element_name">Cadmium</div>
-              <div class="element_mass">112.41</div>
+            <div class="element_num">48</div>
+            <div class="element_symbol">Cd</div>
+            <div class="element_name">Cadmium</div>
+            <div class="element_mass">112.4</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">321.1°C</div>
+            <div class="element_boiling">765°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">49</div>
-              <div class="element_symbol">In</div>
-              <div class="element_name">Indium</div>
-              <div class="element_mass">114.82</div>
+            <div class="element_num">49</div>
+            <div class="element_symbol">In</div>
+            <div class="element_name">Indium</div>
+            <div class="element_mass">114.8</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">156.6°C</div>
+            <div class="element_boiling">2072°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
             <div class="element_num">50</div>
             <div class="element_symbol">Sn</div>
             <div class="element_name">Tin</div>
-            <div class="element_mass">118.71</div>
+            <div class="element_mass">118.7</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">231.9°C</div>
+            <div class="element_boiling">2602°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">51</div>
-              <div class="element_symbol">Sb</div>
-              <div class="element_name">Antimony</div>
-              <div class="element_mass">121.76</div>
+            <div class="element_num">51</div>
+            <div class="element_symbol">Sb</div>
+            <div class="element_name">Antimony</div>
+            <div class="element_mass">121.8</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">630.6°C</div>
+            <div class="element_boiling">1950°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">52</div>
-              <div class="element_symbol">Te</div>
-              <div class="element_name">Tellurium</div>
-              <div class="element_mass">127.60</div>
+            <div class="element_num">52</div>
+            <div class="element_symbol">Te</div>
+            <div class="element_name">Tellurium</div>
+            <div class="element_mass">127.6</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">449.5°C</div>
+            <div class="element_boiling">990°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">53</div>
-              <div class="element_symbol">I</div>
-              <div class="element_name">Iodine</div>
-              <div class="element_mass">126.904</div>
+            <div class="element_num">53</div>
+            <div class="element_symbol">I</div>
+            <div class="element_name">Iodine</div>
+            <div class="element_mass">126.9</div>
+            <div class="element_group">Halogen</div>
+            <div class="element_melting">113.7°C</div>
+            <div class="element_boiling">184.3°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">54</div>
-              <div class="element_symbol">Xe</div>
-              <div class="element_name">Xenon</div>
-              <div class="element_mass">131.29</div>
+            <div class="element_num">54</div>
+            <div class="element_symbol">Xe</div>
+            <div class="element_name">Xenon</div>
+            <div class="element_mass">131.3</div>
+            <div class="element_group">Noble Gas</div>
+            <div class="element_melting">-111.9°C</div>
+            <div class="element_boiling">-108.1°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>
       </div>
@@ -373,14 +624,22 @@
           <div class="element">
             <div class="element_num">55</div>
             <div class="element_symbol">Cs</div>
-            <div class="element_name">Caesium</div>
-            <div class="element_mass">132.91</div>
+            <div class="element_name">Cesium</div>
+            <div class="element_mass">132.9</div>
+            <div class="element_group">Alkali Metal</div>
+            <div class="element_melting">28.4°C</div>
+            <div class="element_boiling">671°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">56</div>
-              <div class="element_symbol">Ba</div>
-              <div class="element_name">Barium</div>
-              <div class="element_mass">137.33</div>
+            <div class="element_num">56</div>
+            <div class="element_symbol">Ba</div>
+            <div class="element_name">Barium</div>
+            <div class="element_mass">137.3</div>
+            <div class="element_group">Alkaline Earth Metal</div>
+            <div class="element_melting">727°C</div>
+            <div class="element_boiling">1897°C</div>
+            <div class="element_form">Solid</div>
           </div>
         </div>
         <div class="right">
@@ -392,181 +651,301 @@
             <div class="element_num">57</div>
             <div class="element_symbol">La</div>
             <div class="element_name">Lanthanum</div>
-            <div class="element_mass">138.91</div>
+            <div class="element_mass">138.9</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">920°C</div>
+            <div class="element_boiling">3469°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">58</div>
-              <div class="element_symbol">Ce</div>
-              <div class="element_name">Cerium</div>
-              <div class="element_mass">140.12</div>
+            <div class="element_num">58</div>
+            <div class="element_symbol">Ce</div>
+            <div class="element_name">Cerium</div>
+            <div class="element_mass">140.1</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">795°C</div>
+            <div class="element_boiling">3257°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">59</div>
-              <div class="element_symbol">Pr</div>
-              <div class="element_name">Praseodymium</div>
-              <div class="element_mass">140.91</div>
+            <div class="element_num">59</div>
+            <div class="element_symbol">Pr</div>
+            <div class="element_name">Praseodymium</div>
+            <div class="element_mass">140.9</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">935°C</div>
+            <div class="element_boiling">3127°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">60</div>
-              <div class="element_symbol">Nd</div>
-              <div class="element_name">Neodymium</div>
-              <div class="element_mass">144.24</div>
+            <div class="element_num">60</div>
+            <div class="element_symbol">Nd</div>
+            <div class="element_name">Neodymium</div>
+            <div class="element_mass">144.2</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1011°C</div>
+            <div class="element_boiling">3127°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">61</div>
-              <div class="element_symbol">Pm</div>
-              <div class="element_name">Promethium</div>
-              <div class="element_mass">(145)</div>
+            <div class="element_num">61</div>
+            <div class="element_symbol">Pm</div>
+            <div class="element_name">Promethium</div>
+            <div class="element_mass">(145)</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1042°C</div>
+            <div class="element_boiling">3000°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">62</div>
-              <div class="element_symbol">Sm</div>
-              <div class="element_name">Samarium</div>
-              <div class="element_mass">150.36</div>
+            <div class="element_num">62</div>
+            <div class="element_symbol">Sm</div>
+            <div class="element_name">Samarium</div>
+            <div class="element_mass">150.4</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1072°C</div>
+            <div class="element_boiling">1794°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">63</div>
-              <div class="element_symbol">Eu</div>
-              <div class="element_name">Europium</div>
-              <div class="element_mass">151.96</div>
+            <div class="element_num">63</div>
+            <div class="element_symbol">Eu</div>
+            <div class="element_name">Europium</div>
+            <div class="element_mass">152.0</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">822°C</div>
+            <div class="element_boiling">1597°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">64</div>
-              <div class="element_symbol">Gd</div>
-              <div class="element_name">Gadolinium</div>
-              <div class="element_mass">157.25</div>
+            <div class="element_num">64</div>
+            <div class="element_symbol">Gd</div>
+            <div class="element_name">Gadolinium</div>
+            <div class="element_mass">157.3</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1312°C</div>
+            <div class="element_boiling">3233°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">65</div>
-              <div class="element_symbol">Tb</div>
-              <div class="element_name">Terbium</div>
-              <div class="element_mass">158.92</div>
+            <div class="element_num">65</div>
+            <div class="element_symbol">Tb</div>
+            <div class="element_name">Terbium</div>
+            <div class="element_mass">158.9</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1360°C</div>
+            <div class="element_boiling">3041°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">66</div>
-              <div class="element_symbol">Dy</div>
-              <div class="element_name">Dysprosium</div>
-              <div class="element_mass">162.50</div>
+            <div class="element_num">66</div>
+            <div class="element_symbol">Dy</div>
+            <div class="element_name">Dysprosium</div>
+            <div class="element_mass">162.5</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1409°C</div>
+            <div class="element_boiling">2567°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">67</div>
-              <div class="element_symbol">Ho</div>
-              <div class="element_name">Holmium</div>
-              <div class="element_mass">164.93</div>
+            <div class="element_num">67</div>
+            <div class="element_symbol">Ho</div>
+            <div class="element_name">Holmium</div>
+            <div class="element_mass">164.9</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1470°C</div>
+            <div class="element_boiling">2720°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">68</div>
-              <div class="element_symbol">Er</div>
-              <div class="element_name">Erbium</div>
-              <div class="element_mass">167.26</div>
+            <div class="element_num">68</div>
+            <div class="element_symbol">Er</div>
+            <div class="element_name">Erbium</div>
+            <div class="element_mass">167.3</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1522°C</div>
+            <div class="element_boiling">2510°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">69</div>
-              <div class="element_symbol">Tm</div>
-              <div class="element_name">Thulium</div>
-              <div class="element_mass">168.93</div>
+            <div class="element_num">69</div>
+            <div class="element_symbol">Tm</div>
+            <div class="element_name">Thulium</div>
+            <div class="element_mass">168.9</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1545°C</div>
+            <div class="element_boiling">1727°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">70</div>
-              <div class="element_symbol">Yb</div>
-              <div class="element_name">Ytterbium</div>
-              <div class="element_mass">173.04</div>
+            <div class="element_num">70</div>
+            <div class="element_symbol">Yb</div>
+            <div class="element_name">Ytterbium</div>
+            <div class="element_mass">173.0</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">824°C</div>
+            <div class="element_boiling">1466°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element lanthanide">
-              <div class="element_num">71</div>
-              <div class="element_symbol">Lu</div>
-              <div class="element_name">Lutetium</div>
-              <div class="element_mass">174.97</div>
+            <div class="element_num">71</div>
+            <div class="element_symbol">Lu</div>
+            <div class="element_name">Lutetium</div>
+            <div class="element_mass">175.0</div>
+            <div class="element_group">Lanthanide</div>
+            <div class="element_melting">1663°C</div>
+            <div class="element_boiling">3402°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">72</div>
-              <div class="element_symbol">Hf</div>
-              <div class="element_name">Hafnium</div>
-              <div class="element_mass">178.49</div>
+            <div class="element_num">72</div>
+            <div class="element_symbol">Hf</div>
+            <div class="element_name">Hafnium</div>
+            <div class="element_mass">178.5</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">2233°C</div>
+            <div class="element_boiling">4603°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">73</div>
-              <div class="element_symbol">Ta</div>
-              <div class="element_name">Tantalum</div>
-              <div class="element_mass">180.95</div>
+            <div class="element_num">73</div>
+            <div class="element_symbol">Ta</div>
+            <div class="element_name">Tantalum</div>
+            <div class="element_mass">180.9</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">3017°C</div>
+            <div class="element_boiling">5458°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">74</div>
-              <div class="element_symbol">W</div>
-              <div class="element_name">Tungsten</div>
-              <div class="element_mass">183.84</div>
+            <div class="element_num">74</div>
+            <div class="element_symbol">W</div>
+            <div class="element_name">Tungsten</div>
+            <div class="element_mass">183.8</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">3422°C</div>
+            <div class="element_boiling">5555°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">75</div>
-              <div class="element_symbol">Re</div>
-              <div class="element_name">Rhenium</div>
-              <div class="element_mass">186.21</div>
+            <div class="element_num">75</div>
+            <div class="element_symbol">Re</div>
+            <div class="element_name">Rhenium</div>
+            <div class="element_mass">186.2</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">3180°C</div>
+            <div class="element_boiling">5596°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">76</div>
-              <div class="element_symbol">Os</div>
-              <div class="element_name">Osmium</div>
-              <div class="element_mass">190.23</div>
+            <div class="element_num">76</div>
+            <div class="element_symbol">Os</div>
+            <div class="element_name">Osmium</div>
+            <div class="element_mass">190.2</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">3033°C</div>
+            <div class="element_boiling">5012°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">77</div>
-              <div class="element_symbol">Ir</div>
-              <div class="element_name">Iridium</div>
-              <div class="element_mass">192.22</div>
+            <div class="element_num">77</div>
+            <div class="element_symbol">Ir</div>
+            <div class="element_name">Iridium</div>
+            <div class="element_mass">192.2</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">2410°C</div>
+            <div class="element_boiling">4130°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">78</div>
-              <div class="element_symbol">Pt</div>
-              <div class="element_name">Platinum</div>
-              <div class="element_mass">195.08</div>
+            <div class="element_num">78</div>
+            <div class="element_symbol">Pt</div>
+            <div class="element_name">Platinum</div>
+            <div class="element_mass">195.1</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1768°C</div>
+            <div class="element_boiling">3825°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">79</div>
-              <div class="element_symbol">Au</div>
-              <div class="element_name">Gold</div>
-              <div class="element_mass">196.97</div>
+            <div class="element_num">79</div>
+            <div class="element_symbol">Au</div>
+            <div class="element_name">Gold</div>
+            <div class="element_mass">197.0</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">1064°C</div>
+            <div class="element_boiling">2856°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">80</div>
-              <div class="element_symbol">Hg</div>
-              <div class="element_name">Mercury</div>
-              <div class="element_mass">200.59</div>
+            <div class="element_num">80</div>
+            <div class="element_symbol">Hg</div>
+            <div class="element_name">Mercury</div>
+            <div class="element_mass">200.6</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">-38.83°C</div>
+            <div class="element_boiling">356.73°C</div>
+            <div class="element_form">Liquid</div>
           </div>
           <div class="element">
-              <div class="element_num">81</div>
-              <div class="element_symbol">Tl</div>
-              <div class="element_name">Thallium</div>
-              <div class="element_mass">204.38</div>
+            <div class="element_num">81</div>
+            <div class="element_symbol">Tl</div>
+            <div class="element_name">Thallium</div>
+            <div class="element_mass">204.4</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">304°C</div>
+            <div class="element_boiling">1473°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">82</div>
-              <div class="element_symbol">Pb</div>
-              <div class="element_name">Lead</div>
-              <div class="element_mass">207.2</div>
+            <div class="element_num">82</div>
+            <div class="element_symbol">Pb</div>
+            <div class="element_name">Lead</div>
+            <div class="element_mass">207.2</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">327.5°C</div>
+            <div class="element_boiling">1749°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">83</div>
-              <div class="element_symbol">Bi</div>
-              <div class="element_name">Bismuth</div>
-              <div class="element_mass">208.98</div>
+            <div class="element_num">83</div>
+            <div class="element_symbol">Bi</div>
+            <div class="element_name">Bismuth</div>
+            <div class="element_mass">208.9</div>
+            <div class="element_group">Metal</div>
+            <div class="element_melting">271.4°C</div>
+            <div class="element_boiling">1564°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">84</div>
-              <div class="element_symbol">Po</div>
-              <div class="element_name">Polonium</div>
-              <div class="element_mass">(209)</div>
+            <div class="element_num">84</div>
+            <div class="element_symbol">Po</div>
+            <div class="element_name">Polonium</div>
+            <div class="element_mass">(209)</div>
+            <div class="element_group">Metalloid</div>
+            <div class="element_melting">254°C</div>
+            <div class="element_boiling">962°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">85</div>
-              <div class="element_symbol">At</div>
-              <div class="element_name">Astatine</div>
-              <div class="element_mass">(210)</div>
+            <div class="element_num">85</div>
+            <div class="element_symbol">At</div>
+            <div class="element_name">Astatine</div>
+            <div class="element_mass">(210)</div>
+            <div class="element_group">Halogen</div>
+            <div class="element_melting">302°C</div>
+            <div class="element_boiling">337°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">86</div>
-              <div class="element_symbol">Rn</div>
-              <div class="element_name">Radon</div>
-              <div class="element_mass">(222)</div>
+            <div class="element_num">86</div>
+            <div class="element_symbol">Rn</div>
+            <div class="element_name">Radon</div>
+            <div class="element_mass">(222)</div>
+            <div class="element_group">Noble Gas</div>
+            <div class="element_melting">-71°C</div>
+            <div class="element_boiling">-61.7°C</div>
+            <div class="element_form">Gas</div>
           </div>
         </div>
         
@@ -578,12 +957,20 @@
             <div class="element_symbol">Fr</div>
             <div class="element_name">Francium</div>
             <div class="element_mass">(223)</div>
+            <div class="element_group">Alkali Metal</div>
+            <div class="element_melting">27°C</div>
+            <div class="element_boiling">677°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element">
-              <div class="element_num">88</div>
-              <div class="element_symbol">Ra</div>
-              <div class="element_name">Radium</div>
-              <div class="element_mass">(226)</div>
+            <div class="element_num">88</div>
+            <div class="element_symbol">Ra</div>
+            <div class="element_name">Radium</div>
+            <div class="element_mass">(226)</div>
+            <div class="element_group">Alkaline Earth Metal</div>
+            <div class="element_melting">700°C</div>
+            <div class="element_boiling">1737°C</div>
+            <div class="element_form">Solid</div>
           </div>
         </div>
         <div class="right">
@@ -596,180 +983,300 @@
             <div class="element_symbol">Ac</div>
             <div class="element_name">Actinium</div>
             <div class="element_mass">(227)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1050°C</div>
+            <div class="element_boiling">3300°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">90</div>
-              <div class="element_symbol">Th</div>
-              <div class="element_name">Thorium</div>
-              <div class="element_mass">232.04</div>
+            <div class="element_num">90</div>
+            <div class="element_symbol">Th</div>
+            <div class="element_name">Thorium</div>
+            <div class="element_mass">232.0</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1750°C</div>
+            <div class="element_boiling">4790°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">91</div>
-              <div class="element_symbol">Pa</div>
-              <div class="element_name">Protactinium</div>
-              <div class="element_mass">231.04</div>
+            <div class="element_num">91</div>
+            <div class="element_symbol">Pa</div>
+            <div class="element_name">Protactinium</div>
+            <div class="element_mass">231.0</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1568°C</div>
+            <div class="element_boiling">4027°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">92</div>
-              <div class="element_symbol">U</div>
-              <div class="element_name">Uranium</div>
-              <div class="element_mass">238.05</div>
+            <div class="element_num">92</div>
+            <div class="element_symbol">U</div>
+            <div class="element_name">Uranium</div>
+            <div class="element_mass">238.0</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1132°C</div>
+            <div class="element_boiling">4131°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">93</div>
-              <div class="element_symbol">Np</div>
-              <div class="element_name">Neptunium</div>
-              <div class="element_mass">(237)</div>
+            <div class="element_num">93</div>
+            <div class="element_symbol">Np</div>
+            <div class="element_name">Neptunium</div>
+            <div class="element_mass">(237)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">640°C</div>
+            <div class="element_boiling">3902°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">94</div>
-              <div class="element_symbol">Pu</div>
-              <div class="element_name">Plutonium</div>
-              <div class="element_mass">(244)</div>
+            <div class="element_num">94</div>
+            <div class="element_symbol">Pu</div>
+            <div class="element_name">Plutonium</div>
+            <div class="element_mass">(244)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">640°C</div>
+            <div class="element_boiling">3232°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">95</div>
-              <div class="element_symbol">Am</div>
-              <div class="element_name">Americium</div>
-              <div class="element_mass">(243)</div>
+            <div class="element_num">95</div>
+            <div class="element_symbol">Am</div>
+            <div class="element_name">Americium</div>
+            <div class="element_mass">(243)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1176°C</div>
+            <div class="element_boiling">2607°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">96</div>
-              <div class="element_symbol">Cm</div>
-              <div class="element_name">Curium</div>
-              <div class="element_mass">(247)</div>
+            <div class="element_num">96</div>
+            <div class="element_symbol">Cm</div>
+            <div class="element_name">Curium</div>
+            <div class="element_mass">(247)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1340°C</div>
+            <div class="element_boiling">3110°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">97</div>
-              <div class="element_symbol">Bk</div>
-              <div class="element_name">Berkelium</div>
-              <div class="element_mass">(247)</div>
+            <div class="element_num">97</div>
+            <div class="element_symbol">Bk</div>
+            <div class="element_name">Berkelium</div>
+            <div class="element_mass">(247)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">986°C</div>
+            <div class="element_boiling">2900°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">98</div>
-              <div class="element_symbol">Cf</div>
-              <div class="element_name">Californium</div>
-              <div class="element_mass">(251)</div>
+            <div class="element_num">98</div>
+            <div class="element_symbol">Cf</div>
+            <div class="element_name">Californium</div>
+            <div class="element_mass">(251)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">900°C</div>
+            <div class="element_boiling">1472°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">99</div>
-              <div class="element_symbol">Es</div>
-              <div class="element_name">Einsteinium</div>
-              <div class="element_mass">(252)</div>
+            <div class="element_num">99</div>
+            <div class="element_symbol">Es</div>
+            <div class="element_name">Einsteinium</div>
+            <div class="element_mass">(252)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">860°C</div>
+            <div class="element_boiling">996°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">100</div>
-              <div class="element_symbol">Fm</div>
-              <div class="element_name">Fermium</div>
-              <div class="element_mass">(257)</div>
+            <div class="element_num">100</div>
+            <div class="element_symbol">Fm</div>
+            <div class="element_name">Fermium</div>
+            <div class="element_mass">(257)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">1527°C</div>
+            <div class="element_boiling">1570°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">101</div>
-              <div class="element_symbol">Md</div>
-              <div class="element_name">Mendelevium</div>
-              <div class="element_mass">(258)</div>
+            <div class="element_num">101</div>
+            <div class="element_symbol">Md</div>
+            <div class="element_name">Mendelevium</div>
+            <div class="element_mass">(258)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">827°C</div>
+            <div class="element_boiling">1200°C</div>
+            <div class="element_form">Solid</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">102</div>
-              <div class="element_symbol">No</div>
-              <div class="element_name">Nobelium</div>
-              <div class="element_mass">(259)</div>
+            <div class="element_num">102</div>
+            <div class="element_symbol">No</div>
+            <div class="element_name">Nobelium</div>
+            <div class="element_mass">(259)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element actinide">
-              <div class="element_num">103</div>
-              <div class="element_symbol">Lr</div>
-              <div class="element_name">Lawrencium</div>
-              <div class="element_mass">(262)</div>
+            <div class="element_num">103</div>
+            <div class="element_symbol">Lr</div>
+            <div class="element_name">Lawrencium</div>
+            <div class="element_mass">(262)</div>
+            <div class="element_group">Actinide</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">104</div>
-              <div class="element_symbol">Rf</div>
-              <div class="element_name">Rutherfordium</div>
-              <div class="element_mass">(267)</div>
+            <div class="element_num">104</div>
+            <div class="element_symbol">Rf</div>
+            <div class="element_name">Rutherfordium</div>
+            <div class="element_mass">(267)</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">105</div>
-              <div class="element_symbol">Db</div>
-              <div class="element_name">Dubnium</div>
-              <div class="element_mass">(270)</div>
+            <div class="element_num">105</div>
+            <div class="element_symbol">Db</div>
+            <div class="element_name">Dubnium</div>
+            <div class="element_mass">(270)</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">106</div>
-              <div class="element_symbol">Sg</div>
-              <div class="element_name">Seaborgium</div>
-              <div class="element_mass">(271)</div>
+            <div class="element_num">106</div>
+            <div class="element_symbol">Sg</div>
+            <div class="element_name">Seaborgium</div>
+            <div class="element_mass">(271)</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">107</div>
-              <div class="element_symbol">Bh</div>
-              <div class="element_name">Bohrium</div>
-              <div class="element_mass">(272)</div>
+            <div class="element_num">107</div>
+            <div class="element_symbol">Bh</div>
+            <div class="element_name">Bohrium</div>
+            <div class="element_mass">(270)</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">108</div>
-              <div class="element_symbol">Hs</div>
-              <div class="element_name">Hassium</div>
-              <div class="element_mass">(270)</div>
+            <div class="element_num">108</div>
+            <div class="element_symbol">Hs</div>
+            <div class="element_name">Hassium</div>
+            <div class="element_mass">(277)</div>
+            <div class="element_group">Transition Metal</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">109</div>
-              <div class="element_symbol">Mt</div>
-              <div class="element_name">Meitnerium</div>
-              <div class="element_mass">(276)</div>
+            <div class="element_num">109</div>
+            <div class="element_symbol">Mt</div>
+            <div class="element_name">Meitnerium</div>
+            <div class="element_mass">(276)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">110</div>
-              <div class="element_symbol">Ds</div>
-              <div class="element_name">Darmstadtium</div>
-              <div class="element_mass">(281)</div>
+            <div class="element_num">110</div>
+            <div class="element_symbol">Ds</div>
+            <div class="element_name">Darmstadtium</div>
+            <div class="element_mass">(281)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">111</div>
-              <div class="element_symbol">Rg</div>
-              <div class="element_name">Roentgenium</div>
-              <div class="element_mass">(280)</div>
+            <div class="element_num">111</div>
+            <div class="element_symbol">Rg</div>
+            <div class="element_name">Roentgenium</div>
+            <div class="element_mass">(280)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">112</div>
-              <div class="element_symbol">Cn</div>
-              <div class="element_name">Copernicium</div>
-              <div class="element_mass">(285)</div>
+            <div class="element_num">112</div>
+            <div class="element_symbol">Cn</div>
+            <div class="element_name">Copernicium</div>
+            <div class="element_mass">(285)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">113</div>
-              <div class="element_symbol">Nh</div>
-              <div class="element_name">Nihonium</div>
-              <div class="element_mass">(284)</div>
+            <div class="element_num">113</div>
+            <div class="element_symbol">Nh</div>
+            <div class="element_name">Nihonium</div>
+            <div class="element_mass">(284)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">114</div>
-              <div class="element_symbol">Fl</div>
-              <div class="element_name">Flerovium</div>
-              <div class="element_mass">(289)</div>
+            <div class="element_num">114</div>
+            <div class="element_symbol">Fl</div>
+            <div class="element_name">Flerovium</div>
+            <div class="element_mass">(289)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">115</div>
-              <div class="element_symbol">Mc</div>
-              <div class="element_name">Moscovium</div>
-              <div class="element_mass">(288)</div>
+            <div class="element_num">115</div>
+            <div class="element_symbol">Mc</div>
+            <div class="element_name">Moscovium</div>
+            <div class="element_mass">(288)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">116</div>
-              <div class="element_symbol">Lv</div>
-              <div class="element_name">Livermorium</div>
-              <div class="element_mass">(292)</div>
+            <div class="element_num">116</div>
+            <div class="element_symbol">Lv</div>
+            <div class="element_name">Livermorium</div>
+            <div class="element_mass">(293)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">117</div>
-              <div class="element_symbol">Ts</div>
-              <div class="element_name">Tennessine</div>
-              <div class="element_mass">(294)</div>
+            <div class="element_num">117</div>
+            <div class="element_symbol">Ts</div>
+            <div class="element_name">Tennessine</div>
+            <div class="element_mass">(294)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
           <div class="element">
-              <div class="element_num">118</div>
-              <div class="element_symbol">Og</div>
-              <div class="element_name">Oganesson</div>
-              <div class="element_mass">(294)</div>
+            <div class="element_num">118</div>
+            <div class="element_symbol">Og</div>
+            <div class="element_name">Oganesson</div>
+            <div class="element_mass">(294)</div>
+            <div class="element_group">Unknown</div>
+            <div class="element_melting">Unknown</div>
+            <div class="element_boiling">Unknown</div>
+            <div class="element_form">Unknown</div>
           </div>
         </div>
         
@@ -963,6 +1470,12 @@
     </div>
 
   </div>
+  
+  <script src="./Element_Layout_js/Element.js">
+    let prograssValue = document.getElementById('visualPosition');
+    console.log('로드된 값:', visualPosition);
+  </script>
+  <script src="./Element_Layout_js/progressbar.js"></script>
   
 </body>
 </html>

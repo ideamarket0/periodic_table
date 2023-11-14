@@ -1,0 +1,139 @@
+.element {
+    /* border: 10px solid purple; */
+    padding: 10px;
+    width: 170px;
+    height: 170px;
+    /* background-color: lightpink;
+    color: rebeccapurple; */
+    text-align: left;
+    font-weight: bold;
+    transition: border-color .3s;
+    /* 네모간 구분을 위한 임시
+    margin: 5px; 
+    display: inline-block; */
+}
+
+.element .element_group,
+.element .element_melting,
+.element .element_boiling,
+.element .element_form {
+    display: none;
+}
+
+/* .element .element_num {
+    font-size: 30px;
+    margin-top: -3%;
+}
+
+.element .element_symbol {
+    font-size: 85px;
+    margin-top: -5%;
+} */
+/* 
+.element .element_name,
+.element_mass {
+    font-size: 25px;
+} */
+/* 
+.element:hover {
+    color:blueviolet;
+}
+
+.element:active, .element:focus {
+    border-color: blue;
+    color: blue;
+}*/
+
+/* .graph-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin: 0;
+    /* background-color: #f0f0f0;
+} */
+
+/* .graph-container {
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+} */
+
+.graph-container {
+    width: 1000px;
+}
+
+.graph-container .temperature-graph .horizontal-line {
+    width: 200px;
+}
+
+.graph-bar {
+    border-radius: 20px;
+    position: relative;
+    width: 500px;
+    height: 40px;
+    background-color: #f1c40f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.graph-selector {
+    border-radius: 50%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graph-value {
+    font-size: 18px;
+    color: #fff;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* style.css */
+.input-container-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.graph-input {
+    width: calc(33.33% - 5px); /* 우측 마진을 줄이기 위해 마진값 수정 */
+    text-align: center;
+    font-size: 24px;
+    margin-right: 5px; /* 각 입력란 사이에 우측 마진 추가 */
+}
+
+.graph-input:last-child {
+    margin-right: 0; /* 마지막 입력란의 마진을 제거 */
+}
+
+
+/* 
+@import "compass/css3";
+
+body{
+  background:white;
+  background-image:url(https://i.imgur.com/d47ZIU3.jpg);
+  background-size:cover;
+}
+.blobs{
+  filter:url('#goo');
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+} */
