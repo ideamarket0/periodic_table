@@ -108,7 +108,7 @@
     margin: auto;
     display: flex;
     flex-direction: row;
-    background-color: red;
+    background-color: rgb(255, 190, 190);
   }
   .actinide_table {
     position: relative;
@@ -118,7 +118,7 @@
     margin: auto;
     display: flex;  
     flex-direction: row;
-    background-color: blue;
+    background-color: rgb(176, 176, 255);
   }
 }
 @media (min-width: 1920px) {

@@ -2,7 +2,6 @@ const kelvinInput = document.getElementById("kelvinInput");
 const fahrenheitInput = document.getElementById("fahrenheitInput");
 const celsiusInput = document.getElementById("celsiusInput");
 
-
 // 선택점의 초기 위치 (시각적 수치)
 // let visualPosition = 48; // 초기 위치를 50으로 설정
 updateSelector(visualPosition);
@@ -60,6 +59,9 @@ function onMouseMove(e) {
     // 실제 수치를 계산하고 업데이트합니다.
     const kelvinValue = convertToKelvin(newPosition, 'kelvin'); // 수정된 부분
     updateTemperature(kelvinValue, 'kelvin');
+
+    // 켈빈 입력란에 있는 값을 그래프 바의 위치에 따라 실시간으로 업데이트
+    kelvinInput.value = kelvinValue; // 추가된 부분
 }
 
 function onMouseUp() {
@@ -81,7 +83,7 @@ function convertToKelvin(value, unit) {
         return value;
     } else {
         // 그 외의 경우 기본은 켈빈으로 유지
-        console.error(`Unsupported unit: ${unit}. Defaulting to Kelvin.`);
+        console.error(`지원하지 않는 단위: ${unit}. 기본값은 켈빈(K)으로 지정됨.`);
         return value;
     }
 }
@@ -165,7 +167,7 @@ function updateTemperature(value, unit) {
         fahrenheitInput.value = convertCelsiusToFahrenheit(value);
         kelvinInput.value = convertCelsiusToKelvin(value);
     } else {
-        console.error(`Unsupported unit: ${unit}. Defaulting to Kelvin.`);
+        console.error(`지원하지 않는 단위: ${unit}. 기본값은 켈빈(K)으로 지정됨.`);
     }
 
     graphBar.value = mapRealToVisual(value); // 그래프바 업데이트

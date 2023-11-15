@@ -16,7 +16,7 @@ function mapVisualToReal(visualPosition) {
     return (visualPosition - 2) * (100 / 92);
 }
 
-// 선택점의 위치와 색상을 업데이트합니다.
+// 그래프바 드레그 색상 변경
 function updateSelector(visualPosition) {
     const realPosition = mapVisualToReal(visualPosition);
     graphSelector.style.left = `calc(${visualPosition}% - 10px)`;
@@ -26,7 +26,7 @@ function updateSelector(visualPosition) {
     updateElementColors(color);
 }
 
-// 그래프 바에서 마우스 드래그 이벤트를 수신합니다.
+// 그래프 바에서 마우스 드래그 이벤트를 수신
 let isDragging = false;
 
 graphBar.addEventListener("mousedown", (e) => {
@@ -105,61 +105,66 @@ function convertCelsius(value, toUnit) {
 function Look_Alignment(type, element_Temperature) {
     console.log(`Look Alignment -> type: ${type} | element_Temperature: ${element_Temperature}`);
 
-    let elements = document.querySelectorAll('.periodic_table .element');
+    // 모든 테이블의 원소를 선택
+    let tables = document.querySelectorAll('.periodic_table, .actinide_table, .lanthanide_table');
 
-    elements.forEach(element => {
-        let elementNum = element.querySelector('.element_num').textContent;
+    tables.forEach(table => {
+        let elements = table.querySelectorAll('.element');
 
-        if (elementNum.includes('-')) {
-            // 일단 공백 유지(정공법은 tag lanthanide element 통해서 TAG 제거)
-        } else {
-            console.log(`Element Num: ${elementNum}`);
-            
-            let element_form = element.querySelector('.element_form');
+        elements.forEach(element => {
+            let elementNum = element.querySelector('.element_num').textContent;
 
-            if (!element_form) {
-                console.error(`.element_formd에서 elementNum에 대해 찾을 수 없음: ${elementNum}`);
-                return;
+            if (elementNum.includes('-')) {
+                // lanthanide나 actinide는 건너뜀
+            } else {
+                console.log(`Element Num: ${elementNum}`);
+
+                let element_form = element.querySelector('.element_form');
+
+                if (!element_form) {
+                    console.error(`.element_form에서 elementNum에 대해 찾을 수 없음: ${elementNum}`);
+                    return;
+                }
+
+                let elementState = Element_Calculation(element_Temperature, element);
+
+                console.log(`Form - ${element_form}, State - ${elementState}`);
+
+                switch (type) {
+                    case 'Solid':
+                        if (elementState === 'Solid') {
+                            element.style.backgroundColor = 'green';
+                        } else {
+                            element.style.backgroundColor = 'yellow';
+                        }
+                        break;
+                    case 'Liquid':
+                        if (elementState === 'Liquid') {
+                            element.style.backgroundColor = 'green';
+                        } else {
+                            element.style.backgroundColor = 'yellow';
+                        }
+                        break;
+                    case 'Gas':
+                        if (elementState === 'Gas') {
+                            element.style.backgroundColor = 'green';
+                        } else {
+                            element.style.backgroundColor = 'yellow';
+                        }
+                        break;
+                    default:
+                        if (elementState === 'Unknown') {
+                            element.style.backgroundColor = 'green';
+                        } else {
+                            element.style.backgroundColor = 'yellow';
+                        }
+                        break;
+                }
             }
-
-            // let element_form_content = element_form.textContent;
-            let elementState = Element_Calculation(element_Temperature, element);
-
-            console.log(`Form - ${element_form}, State - ${elementState}`);
-
-            switch (type) {
-                case 'Solid':
-                    if (elementState === 'Solid') {
-                        element.style.backgroundColor = 'green';
-                    } else {
-                        element.style.backgroundColor = 'yellow';
-                    }
-                    break;
-                case 'Liquid':
-                    if (elementState === 'Liquid') {
-                        element.style.backgroundColor = 'green';
-                    } else {
-                        element.style.backgroundColor = 'yellow';
-                    }
-                    break;
-                case 'Gas':
-                    if (elementState === 'Gas') {
-                        element.style.backgroundColor = 'green';
-                    } else {
-                        element.style.backgroundColor = 'yellow';
-                    }
-                    break;
-                default:
-                    if (elementState === 'Unknown') {
-                        element.style.backgroundColor = 'green';
-                    } else {
-                        element.style.backgroundColor = 'yellow';
-                    }
-                    break;
-            }
-        }
+        });
     });
 }
+
 
 
 
@@ -195,11 +200,11 @@ function Element_Calculation(element_Temperature, element) {
         return 'Unknown';
     }
 
-    // 섭씨로 변환된 온도로 계산  // -273 >= -252
+    // 섭씨로 변환된 온도로 계산
     if (element_Temperature_Celsius >= element_bl) {
         console.log(`El: Gas, ${element.className}`);
         return 'Gas';
-    } else if (element_Temperature_Celsius >= element_mt) {
+    } else if (element_Temperature_Celsius > element_mt) {
         console.log(`El: Liquid, ${element.className}`);
         return 'Liquid';
     } else {
