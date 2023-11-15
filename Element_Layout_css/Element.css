@@ -15,7 +15,7 @@
 
 .element .element_group,
 .element .element_melting,
-.element .element_boiling,
+.element .element_boiling,      
 .element .element_form {
     display: none;
 }

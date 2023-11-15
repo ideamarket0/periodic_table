@@ -62,7 +62,10 @@ function onMouseUp() {
 function updateElementColors(color) {
   const elements = document.querySelectorAll(".element");
   elements.forEach((element) => {
-    element.style.backgroundColor = color;
+    let elementNum = element.querySelector('.element_num').textContent;
+    if (!elementNum.includes('-')) { // 57-71, 89-103칸 예외 처리.
+        element.style.backgroundColor = color;
+    }
   });
 }
 

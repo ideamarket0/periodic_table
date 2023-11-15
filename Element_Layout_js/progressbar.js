@@ -15,7 +15,7 @@ function mapVisualToReal(visualPosition) {
 // 그라데이션 색상 계산 함수
 function calculateGradientColor(position) {
     const red = Math.round(255 - (position * 255) / 100);
-    const blue = Math.round((position * 255) / 100);
+    const blue = Math.round((position * 500) / 100);
     return `rgb(${blue}, 0, ${red})`;
   }
 

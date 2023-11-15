@@ -120,6 +120,14 @@
     flex-direction: row;
     background-color: rgb(176, 176, 255);
   }
+  .tag.lanthanide {
+    color: rgb(255, 87, 87);
+    background-color: rgb(255, 190, 190);
+  }
+  .tag.actinide {
+    color: rgb(83, 83, 255);
+    background-color: rgb(176, 176, 255);
+  }
 }
 @media (min-width: 1920px) {
   .periodic_table .tag.lanthanide {
@@ -140,11 +148,11 @@
     background-color: lightpink;
     box-sizing: border-box;
   }
-  .lanthanide_table {
+  /* .lanthanide_table {
     display: none;
   }
   .actinide_table {
     display: none;
-  }
+  } */
 }
 
