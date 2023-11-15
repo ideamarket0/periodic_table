@@ -115,7 +115,7 @@ function Look_Alignment(type, element_Temperature) {
             let elementNum = element.querySelector('.element_num').textContent;
 
             if (elementNum.includes('-')) {
-                // lanthanide나 actinide는 건너뜀
+                // 공백 유지
             } else {
                 console.log(`Element Num: ${elementNum}`);
 

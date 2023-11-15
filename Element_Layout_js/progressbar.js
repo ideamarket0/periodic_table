@@ -12,6 +12,13 @@ function mapVisualToReal(visualPosition) {
     return (visualPosition - 4) * (6000 / 92);
 }
 
+// 그라데이션 색상 계산 함수
+function calculateGradientColor(position) {
+    const red = Math.round(255 - (position * 255) / 100);
+    const blue = Math.round((position * 255) / 100);
+    return `rgb(${blue}, 0, ${red})`;
+  }
+
 // 선택점의 위치와 색상 업데이트.
 function updateSelector(visualPosition) {
     const realPosition = mapVisualToReal(visualPosition);
@@ -106,14 +113,6 @@ graphBar.value = mapRealToVisual(273); // 273K = 0%
 
 // 초기 온도 설정 (켈빈)
 updateTemperature(273, 'kelvin');
-
-
-// 그라데이션 색상 계산 함수
-function calculateGradientColor(position) {
-  const red = Math.round(255 - (position * 255) / 100);
-  const blue = Math.round((position * 255) / 100);
-  return `rgb(${blue}, 0, ${red})`;
-}
 
 // 시각적 수치(0~100)를 실제 수치(0~6,000)로 변환하는 함수
 function mapVisualToReal(visualPosition) {
